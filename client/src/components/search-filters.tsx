@@ -40,7 +40,7 @@ export default function SearchFilters({
             className="pl-10"
           />
         </div>
-        
+        <br></br>
         {/* Filter Tags */}
         <div className="flex flex-wrap items-center space-x-2">
           <span className="text-sm font-medium text-gray-700 whitespace-nowrap">Filter by:</span>
