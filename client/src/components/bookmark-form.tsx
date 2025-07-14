@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/api";
 import { insertBookmarkSchema } from "@shared/schema";
 import type { Bookmark } from "@shared/schema";
+import { z } from "zod";
 
 interface BookmarkFormProps {
   bookmark?: Bookmark | null;

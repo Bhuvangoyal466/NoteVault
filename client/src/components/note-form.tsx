@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/api";
 import { insertNoteSchema } from "@shared/schema";
 import type { Note } from "@shared/schema";
+import { z } from "zod";
 
 interface NoteFormProps {
   note?: Note | null;
