@@ -30,7 +30,6 @@ Manage personal notes and bookmarks with tagging, search, filtering, and clean U
 
 ## ▶️ Getting Started
 
-```bash
 npm install
 npm run dev
 
