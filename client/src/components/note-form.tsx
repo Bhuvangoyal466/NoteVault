@@ -20,7 +20,14 @@ export default function NoteForm({ note, onClose }: NoteFormProps) {
   const { toast } = useToast();
   
   const form = useForm({
-    resolver: zodResolver(insertNoteSchema),
+    resolver: zodResolver(insertNoteSchema.extend({
+      tags: z.union([z.array(z.string()), z.string()]).transform((val) => {
+        if (typeof val === 'string') {
+          return val.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+        }
+        return val;
+      })
+    })),
     defaultValues: {
       title: note?.title || "",
       content: note?.content || "",
@@ -54,13 +61,7 @@ export default function NoteForm({ note, onClose }: NoteFormProps) {
   });
 
   const onSubmit = (data: any) => {
-    // Parse tags from comma-separated string
-    const tagsString = data.tags;
-    const tags = typeof tagsString === 'string' 
-      ? tagsString.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
-      : tagsString;
-    
-    mutation.mutate({ ...data, tags });
+    mutation.mutate(data);
   };
 
   return (

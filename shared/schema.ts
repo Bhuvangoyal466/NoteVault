@@ -27,6 +27,8 @@ export const insertNoteSchema = createInsertSchema(notes).omit({
   id: true,
   createdAt: true,
   updatedAt: true,
+}).extend({
+  tags: z.array(z.string()).default([]),
 });
 
 export const insertBookmarkSchema = createInsertSchema(bookmarks).omit({
@@ -35,6 +37,7 @@ export const insertBookmarkSchema = createInsertSchema(bookmarks).omit({
   updatedAt: true,
 }).extend({
   url: z.string().url("Please enter a valid URL"),
+  tags: z.array(z.string()).default([]),
 });
 
 export type InsertNote = z.infer<typeof insertNoteSchema>;

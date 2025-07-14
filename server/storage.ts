@@ -51,6 +51,8 @@ export class MemStorage implements IStorage {
     const note: Note = {
       ...insertNote,
       id: this.currentNoteId++,
+      tags: insertNote.tags || [],
+      isFavorite: insertNote.isFavorite || false,
       createdAt: now,
       updatedAt: now,
     };
@@ -111,6 +113,9 @@ export class MemStorage implements IStorage {
     const bookmark: Bookmark = {
       ...insertBookmark,
       id: this.currentBookmarkId++,
+      description: insertBookmark.description || null,
+      tags: insertBookmark.tags || [],
+      isFavorite: insertBookmark.isFavorite || false,
       createdAt: now,
       updatedAt: now,
     };
